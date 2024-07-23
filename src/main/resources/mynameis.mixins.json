@@ -1,0 +1,12 @@
+{
+	"required": true,
+	"package": "dev.millzy.mynameis.mixins",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"PlayerEntityMixin",
+		"ServerPlayerEntityMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

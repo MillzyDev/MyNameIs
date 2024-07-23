@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "mynameis",
+	"version": "${version}",
+	"name": "MyNameIs",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Millzy"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/mynameis/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			{
+				"value": "dev.millzy.mynameis.MyNameIsMod",
+				"adapter": "kotlin"
+			}
+		]
+	},
+	"mixins": [
+		"mynameis.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*",
+		"fabric-language-kotlin": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
