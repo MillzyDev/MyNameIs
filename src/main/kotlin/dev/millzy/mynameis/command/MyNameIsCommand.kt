@@ -3,6 +3,8 @@ package dev.millzy.mynameis.command
 import com.mojang.brigadier.arguments.StringArgumentType
 import com.mojang.brigadier.context.CommandContext
 import dev.millzy.mynameis.NameHandler
+import dev.millzy.mynameis.config.Config
+import dev.millzy.mynameis.config.ConfigManager
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback
 import net.minecraft.network.packet.s2c.play.PlayerListS2CPacket
 import net.minecraft.server.command.CommandManager
@@ -29,6 +31,12 @@ object MyNameIsCommand {
         // this still isn't great design though.
         val player: ServerPlayerEntity = context.source.player!!
         val newName: String = context.getArgument("name", String::class.java)
+        val maxLength: Int = ConfigManager.config?.maxLength ?: 48
+
+        if (newName.length > maxLength) {
+            context.source.sendFeedback({Text.of("That name is too long! Can be up to $maxLength characters.")}, false)
+        }
+
         val uuid: String = player.uuidAsString
 
         NameHandler.setName(uuid, newName)
